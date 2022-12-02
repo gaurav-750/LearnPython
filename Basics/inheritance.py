@@ -1,15 +1,14 @@
 from abc import ABC, abstractmethod
 
 
-class Animal:
+# class Animal:
 
-    def __init__(self):
-        print("Animal cons")
+#     def __init__(self):
+#         print("Animal cons")
+#         self.age = 1
 
-        self.age = 1
-
-    def eat(self):
-        print("eat!")
+#     def eat(self):
+#         print("eat!")
 
 # Animal - Base, Parent
 # Mammal - Derived, Child
@@ -46,14 +45,14 @@ class Animal:
 # print(issubclass(Mammal, Animal))
 
 
-class Bird(Animal):
+# class Bird(Animal):
 
-    def fly(self):
-        print("Bird Flying.")
+#     def fly(self):
+#         print("Bird Flying.")
 
 
-class Chicken(Bird):
-    pass
+# class Chicken(Bird):
+#     pass
 
 
 # !Multiple Inheritance:
@@ -78,7 +77,7 @@ class Manager(Person, Employee):
 
 
 m = Manager()
-m.greet()
+# m.greet()
 
 
 class InvalidOpError(Exception):
@@ -89,6 +88,7 @@ class InvalidOpError(Exception):
 class Stream(ABC):
 
     def __init__(self):
+        print("Stream Constructor!")
         self.open = False
 
     def open(self):
@@ -129,3 +129,56 @@ ns.read()
 
 ms = MemoryStream()
 ms.read()
+
+
+class Animal(ABC):
+    def __init__(self):
+        print("Animal Cons!")
+
+    @abstractmethod
+    def sound(self):
+        pass
+
+
+class Tiger(Animal):
+    def __init__(self):
+        super().__init__()
+        print("Tiger Cons!")
+
+    def sound(self):
+        print("tiger roar..!")
+
+
+print("----------")
+# t = Tiger()
+# t.sound()
+
+
+#! Polymorphism:
+class UIControl(ABC):
+    @abstractmethod
+    def draw(self):
+        pass
+
+
+class TextBox(UIControl):
+    def draw(self):
+        print("TextBox Draw!")
+
+
+class DropDownList(UIControl):
+    def draw(self):
+        print("DropDownList Draw!")
+
+
+def draw(controls):
+    for control in controls:
+        control.draw()
+
+
+ddl = DropDownList()
+print(isinstance(ddl, UIControl))
+
+tb = TextBox()
+
+draw([ddl, tb])
