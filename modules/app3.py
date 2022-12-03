@@ -22,4 +22,4 @@ jsonData = jsonFile.read_text()
 movies = json.loads(jsonData)  # it will convert it into Python object
 
 print(movies)
-print(movies[1])
+print(movies[1]["name"])
