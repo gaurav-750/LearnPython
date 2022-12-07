@@ -1,4 +1,5 @@
 from selenium import webdriver
+import config
 
 print("Selenium: Automation Testing Tool For Websites")
 
@@ -14,14 +15,14 @@ browser.maximize_window()  # For maximizing window
 signin_link = browser.find_element_by_link_text("Sign in")
 signin_link.click()
 
-browser.implicitly_wait(4)  # * gives an implicit wait for 20 seconds
+browser.implicitly_wait(4)  # * gives an implicit wait for 4 seconds
 
 # *send the username and password in appropriate textboxes
 username_box = browser.find_element_by_id("login_field")
 username_box.send_keys("gaurav-750")
 
 password_box = browser.find_element_by_id("password")
-password_box.send_keys("Realme6750")
+password_box.send_keys(config.PASSWORD)
 password_box.submit()
 
 
@@ -29,6 +30,7 @@ password_box.submit()
 assert 'gaurav-750' in browser.page_source
 print("Sign In Successfull!")
 
+browser.quit()  # close the browser
 
 # browser.implicitly_wait(10)
 
