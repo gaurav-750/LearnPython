@@ -7,6 +7,9 @@ from django.utils import timezone
 class Genre(models.Model):
     name = models.CharField(max_length=255)  # as it'll be textual data
 
+    def __str__(self):  # * changing the default presentation of the Object in Admin panel
+        return self.name
+
 
 class Movie(models.Model):
     title = models.CharField(max_length=255)
@@ -15,3 +18,6 @@ class Movie(models.Model):
     daily_rate = models.FloatField()
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
     date_created = models.DateTimeField(default=timezone.now)
+
+    def __str__(self) -> str:
+        return self.title
