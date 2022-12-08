@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 django = "==2.1.5"
+django-tastypie = "*"
 
 [dev-packages]
 autopep8 = "*"
