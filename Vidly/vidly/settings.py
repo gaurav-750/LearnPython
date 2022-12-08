@@ -55,6 +55,8 @@ ROOT_URLCONF = 'vidly.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        # * By doing this, Django will start searching in the templates/ as well,
+        # and if it cannot find it there, it'll search in the installed apps -> auth, admin, movies
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
